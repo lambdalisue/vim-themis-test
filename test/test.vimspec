@@ -1,0 +1,20 @@
+Describe test
+  Before all
+    let V = vital#of('vital')
+    let Path = V.import('System.Filepath')
+    let ScriptLocal = V.import('Vim.ScriptLocal')
+    let scriptfile = Path.realpath('autoload/test.vim')
+  End
+
+  Before
+    let sv = ScriptLocal.svars(scriptfile)
+  End
+
+  Describe test#get_references()
+    It equals to s:refernces
+      let a = sv.references
+      let b = test#get_references()
+      Assert Same(a, b)
+    End
+  End
+End
